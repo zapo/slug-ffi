@@ -1,0 +1,15 @@
+require 'bundler/gem_tasks'
+require 'rake/testtask'
+
+Rake::TestTask.new(:test => :compile) do |t|
+  t.libs << 'test'
+  t.libs << 'lib'
+  t.test_files = FileList['test/**/*_test.rb']
+end
+
+task :compile do
+  manifest_path = File.expand_path(File.join(File.dirname(__FILE__), 'ext/Cargo.toml'))
+  sh("cargo build --release --manifest-path #{manifest_path}")
+end
+
+task :default => :compile

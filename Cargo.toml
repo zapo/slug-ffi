@@ -1,0 +1,12 @@
+[package]
+name = "slug_ffi"
+version = "0.1.0"
+authors = ["Antoine Niek <antoine.niek@adgear.com>"]
+
+[dependencies]
+slug = "*"
+libc = "*"
+
+[lib]
+name = "slug_ffi"
+crate-type = ["dylib"]
