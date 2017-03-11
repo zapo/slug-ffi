@@ -13,6 +13,12 @@ class SlugrsTest < Minitest::Test
   end
 
   def test_lossy_invalid_utf8
-    assert_equal('things', Slugrs.slugify("\xC3things\xC3".force_encoding('utf-8')))
+    assert_equal('things', Slugrs.slugify("\xC3things\xC3"))
+  end
+
+  def test_chockes_on_nul_byte
+    assert_raises ArgumentError do
+      Slugrs.slugify("thi\0ngs")
+    end
   end
 end
