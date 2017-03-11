@@ -9,4 +9,4 @@ libc = "*"
 
 [lib]
 name = "slug_ffi"
-crate-type = ["dylib"]
+crate-type = ["cdylib"]
